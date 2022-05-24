@@ -10,8 +10,8 @@ if __name__ == '__main__':
     train_logger = tb.SummaryWriter('logs/train', flush_secs=1)
     valid_logger = tb.SummaryWriter('logs/valid', flush_secs=1)
     dataset = MNIST('data/', download=True, transform=ToTensor())
-    train_loader = DataLoader(dataset)    
-    dataset = MNIST('data/',train=False, transform=ToTensor)
+    train_loader = DataLoader(dataset, batch_size=32)    
+    dataset = MNIST('data/',train=False, transform=ToTensor())
     test_loader = DataLoader(dataset)
     
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
